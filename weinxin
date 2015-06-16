@@ -1,0 +1,89 @@
+{
+   "button" : [
+      {
+         "name" : "家居状态",
+         "sub_button" : [
+            {
+               "key" : "Home_Photoelectricity",
+               "name" : "光电闸",
+               "type" : "click"
+            },
+            {
+               "key" : "Home_Door",
+               "name" : "房门",
+               "type" : "click"
+            },
+            {
+               "key" : "Home_Tem_Hum",
+               "name" : "温湿度",
+               "type" : "click"
+            },
+            {
+                "key" : "All_note_status",
+               "name" : "各节点状态",
+               "type" : "click"
+            }
+         ]
+      },
+      {
+         "name" : "灯光控制",
+         "sub_button" : [
+            {
+               "key" : "Light_OneFL",
+               "name" : "一楼主卧",
+               "type" : "click"
+            },
+            {
+               "key" : "Light_TwoFL",
+               "name" : "二楼次卧",
+               "type" : "click"
+            },
+            {
+               "key" : "Light_Hall",
+               "name" : "大厅",
+               "type" : "click"
+            },
+            {
+               "key" : "Light_Kitchen",
+               "name" : "厨房",
+               "type" : "click"
+            },
+            {
+               "key" : "Light_Study",
+               "name" : "书房",
+               "type" : "click"
+            }
+         ]
+      },
+      {
+         "name" : "家居控制",
+         "sub_button" : [
+            {
+               "key" : "Home_Curtain",
+               "name" : "窗帘",
+               "type" : "click"
+            },
+            {
+               "key" : "Light_Stairs",
+               "name" : "楼梯灯",
+               "type" : "click"
+            },
+            {
+               "key" : "Home_Warning",
+               "name" : "报警",
+               "type" : "click"
+            },
+            {
+               "key" : "Home_Camera",
+               "name" : "摄像头",
+               "type" : "click"
+            },
+            {
+               "key" : "Garage_Door",
+               "name" : "车库门",
+               "type" : "click"
+            }
+         ]
+      }
+   ]
+}

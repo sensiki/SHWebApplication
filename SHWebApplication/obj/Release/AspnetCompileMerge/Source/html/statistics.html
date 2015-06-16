@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <title>智能家居监控管理系统</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="robots" content="" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="../css/jquery-ui.css" /> 
+    <link rel="stylesheet" href="../css/style.css" media="all" />
+    <script src="../js/ajax.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../css/ui.css" media="all" />
+    <script type="text/javascript">
+        ajax("/Admin/users.ashx", "type=GetUserName", function (restext) {
+            var result = JSON.parse(restext);
+            if (result.result == "true") {
+                document.getElementById("user").innerHTML = "<img src=" + "../images/pic.jpg" + " alt='' height='40' width='40' />" + result.data + " 欢迎回来！！！";
+            }
+            else {
+                window.location.href = "../Admin/login.ashx";
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="testing">
+        <header class="main">
+            <h1>智能家居监控管理系统</h1>
+
+        </header>
+        <section class="user">
+            <div class="profile-img">
+                <p id="user"><img src="../images/uiface2.png" alt="" height="40" width="40" /> Farsight 欢迎回来！</p>
+            </div>
+            <div class="buttons">
+                <button class="ico-font">&#9206;</button>
+                <span class="button">帮助</span>
+                <span class="button blue"><a href="../Admin/login.ashx">退出</a></span>
+            </div>
+        </section>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="../Admin/admin.ashx"><span class="icon">&#128711;</span> 控制面板</a></li>
+            <li>
+                <a href="../Admin/nodeinfo.ashx"><span class="icon">&#128196;</span> 节点</a>
+            </li>
+            <li>
+                <a href="../html/files.html"><span class="icon">&#127748;</span> 媒体  </a>
+            </li>
+            <li>
+                <a href="../Admin/log.ashx"><span class="icon">&#59160;</span> 日志  </a>
+            </li>
+            <li class="section"><a href="../html/statistics.html"><span class="icon">&#128202;</span> 统计 </a></li>
+            <li><a href="../Admin/users.ashx"><span class="icon">&#128101;</span> 用户 </a></li>
+        </ul>
+    </nav>
+    <section class="content">
+        <section class="widget">
+            <header>
+                <span class="icon">&#128200;</span>
+                <hgroup>
+                    <h1>温湿度光强统计</h1>
+                    <h2>曲线图</h2>
+                </hgroup>
+                <aside>
+                    <button class="left-btn">&#59229;</button><button class="right-btn">&#59230;</button>
+                </aside>
+            </header>
+            <div class="content cycle">
+                <div id="flot-example-2" class="graph-area"></div>
+                <div id="flot-example-1" class="graph-area"></div>
+            </div>
+        </section>
+
+        <div class="widget-container" style="height:auto;">
+            <section class="widget small">
+                <header>
+                    <span class="icon">&#59241;</span>
+                    <hgroup>
+                        <h1>预留</h1>
+                        <h2>?</h2>
+                    </hgroup>
+                    
+                </header>
+                <div class="content">
+                    <div id="progressbar1"></div>
+                    <div id="progressbar2"></div>
+                    <div id="progressbar3"></div>
+                    <div id="progressbar4"></div>
+                    <div id="progressbar5"></div>
+                    <div id="progressbar6"></div>
+                </div>
+            </section>
+
+            <section class="widget small">
+                <header>
+                    <span class="icon">&#9716;</span>
+                    <hgroup>
+                        <h1>预留</h1>
+                        <h2>?</h2>
+                    </hgroup>
+                </header>
+                <div class="content">
+                    <div class="pie graph-area">
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="widget-container">
+            <div style="height:80px">
+                北京华清远见教育集团 <a href="http://www.farsight.com.cn/" title="Farsight" target="_blank">Farsight</a> - 技术支持 <a href="http://dev.hqyj.com/" target="_blank" title="研发中心">研发中心</a>
+            </div>
+        </div>
+    </section>
+    <script src="../Scripts/jquery-1.6.1.min.js"></script>
+    <script src="../js/jquery.wysiwyg.js"></script>
+    <script src="../js/custom.js"></script>
+    <script src="../js/cycle.js"></script>
+    <script src="../js/jquery.checkbox.min.js"></script>
+    <script src="../js/flot.js"></script>
+    <script src="../js/flot.resize.js"></script>
+    <script src="../js/flot-time.js"></script>
+    <script src="../js/flot-pie.js"></script>
+    <script src="../js/ajax.js" type="text/javascript"></script>
+    <script src="../js/flot-graphs.js"></script>
+    <script src="../js/cycle.js"></script>
+    <script src="../js/jquery.tablesorter.min.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script type="text/javascript">
+        // Feature slider for graphs
+        $('.cycle').cycle({
+            fx: "scrollHorz",
+            timeout: 0,
+            slideResize: 0,
+            prev: '.left-btn',
+            next: '.right-btn'
+        });
+        $(function () {
+
+            $("#progressbar1").progressbar({
+                value: 47
+            });
+
+            $("#progressbar2").progressbar({
+                value: 23
+            });
+
+            $("#progressbar3").progressbar({
+                value: 29
+            });
+
+            $("#progressbar4").progressbar({
+                value: 78
+            });
+
+            $("#progressbar5").progressbar({
+                value: 38
+            });
+
+            $("#progressbar6").progressbar({
+                value: 95
+            });
+        });
+    </script>
+</body>
+</html>

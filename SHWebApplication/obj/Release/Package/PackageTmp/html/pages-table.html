@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <title>智能家居监控管理系统</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="robots" content="" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" media="all" />
+    <script src="../js/ajax.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        ajax("/Admin/users.ashx", "type=GetUserName", function (restext) {
+            var result = JSON.parse(restext);
+            if (result.result == "true") {
+                document.getElementById("user").innerHTML = "<img src=" + "../images/pic.jpg" + " alt='' height='40' width='40' />" + result.data + " 欢迎回来！！！";
+            }
+            else {
+                window.location.href = "../Admin/login.ashx";
+            }
+        });
+        window.setInterval(function () {
+            var slpata = document.getElementById("myTable");
+            ajax("../Admin/nodeinfo.ashx", "type=status", function (restext) {
+                var result = JSON.parse(restext);
+                if (result.result == "true") {
+                    slpata.innerHTML = result.data;
+                }
+            });
+        }, 1000);
+    </script>
+</head>
+<body>
+    <div class="testing">
+        <header class="main">
+            <h1>智能家居监控管理系统</h1>
+        </header>
+        <section class="user">
+            <div class="profile-img">
+                <p id="user"><img src="../images/uiface2.png" alt="" height="40" width="40" /> Farsight 欢迎回来！</p>
+            </div>
+            <div class="buttons">
+                <button class="ico-font">&#9206;</button>
+                <span class="button">帮助</span>
+                <span class="button blue"><a href="../Admin/login.ashx">退出</a></span>
+            </div>
+        </section>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="../Admin/admin.ashx"><span class="icon">&#128711;</span> 控制面板</a></li>
+            <li class="section">
+                <a href="../Admin/nodeinfo.ashx"><span class="icon">&#128196;</span> 节点</a>
+            </li>
+            <li>
+                <a href="../html/files.html"><span class="icon">&#127748;</span> 媒体  </a>
+            </li>
+            <li>
+                <a href="../Admin/log.ashx"><span class="icon">&#59160;</span> 日志  </a>
+            </li>
+            <li><a href="../html/statistics.html"><span class="icon">&#128202;</span> 统计 </a></li>
+            <li><a href="../Admin/users.ashx"><span class="icon">&#128101;</span> 用户 </a></li>
+        </ul>
+    </nav>
+    <section class="content">
+        <section class="widget">
+            <header>
+                <span class="icon">&#128196;</span>
+                <hgroup>
+                    <h1>节点</h1>
+                    <h2>各控制节点信息</h2>
+                </hgroup>
+                
+            </header>
+            <div class="content">
+                <table id="myTable" border="0" width="100">
+                    <thead>
+                        <tr>
+                            <th>节点</th>
+                            <th>时间</th>
+                            <th>状态</th>
+                            <th>值</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <div class="widget-container">
+            <div style="height:80px">
+                北京华清远见教育集团 <a href="http://www.farsight.com.cn/" title="Farsight" target="_blank">Farsight</a> - 技术支持 <a href="http://dev.hqyj.com/" target="_blank" title="研发中心">研发中心</a>
+            </div>
+        </div>
+    </section>
+    <script src="../Scripts/jquery-1.6.1.min.js"></script>
+    <script src="../js/jquery.wysiwyg.js"></script>
+    <script src="../js/custom.js"></script>
+    <script src="../js/cycle.js"></script>
+    <script src="../js/jquery.checkbox.min.js"></script>
+    <script src="../js/flot.js"></script>
+    <script src="../js/flot.resize.js"></script>
+    <script src="../js/flot-time.js"></script>
+    <script src="../js/cycle.js"></script>
+    <script src="../js/jquery.tablesorter.min.js"></script>
+    <script src="../js/ajax.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(init);
+        function init() {
+            var slpata = document.getElementById("myTable");
+            ajax("../Admin/nodeinfo.ashx", "type=status", function (restext) {
+                var result = JSON.parse(restext);
+                if (result.result == "true") {
+                    slpata.innerHTML = result.data;
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

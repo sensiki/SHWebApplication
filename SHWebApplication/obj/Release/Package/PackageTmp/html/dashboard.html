@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <title>智能家居</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="robots" content="" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" media="all" />
+    <script src="../js/ajax.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery-1.6.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        ajax("../Admin/users.ashx", "type=GetUserName", function (restext) {
+            var result = JSON.parse(restext);
+            if (result.result == "true") {
+                document.getElementById("user").innerHTML = "<img src=" + "../images/pic.jpg" + " alt='' height='40' width='40' />" + result.data + " 欢迎回来！！！";
+            }
+            else {
+                window.location.href = "../Admin/login.ashx";
+            }
+        });
+        function slpatient(node) {
+            ajax("/Admin/admin.ashx", "type=light&node=" + node, function (restext) {
+                if (restext == "false") {
+                    alert("节点没有连接！");
+                }
+                else if (restext == "low")
+                    alert("用户权限不足,请重新登录!");
+            });
+        }
+            window.setInterval(function () {
+                ajax("../Admin/admin.ashx", "type=updata", function (restext) {
+                    if (restext != "false") {
+                        var result = JSON.parse(restext);
+                        for (var i = 0; i < result.length; i++) {
+                            if (result[i].Modle == "01") {
+                                if (result[i].Data == "000001") {
+                                    document.getElementById("OneFL").style.color = "#5daced";
+                                    document.getElementById("OneFL2").innerHTML = "on";
+                                    document.getElementById("OneFL2").style.color = "#f00";
+                                }
+                                else if (result[i].Data == "000000") {
+                                    document.getElementById("OneFL").style.color = "#7e7474";
+                                    document.getElementById("OneFL2").innerHTML = "off";
+                                    document.getElementById("OneFL2").style.color = "#7e7474";
+                                }
+                            }
+                            else if (result[i].Modle == "02") {
+                                if (result[i].Data == "000001") {
+                                    document.getElementById("TwoFL").style.color = "#5daced";
+                                    document.getElementById("TwoFL2").innerHTML = "on";
+                                    document.getElementById("TwoFL2").style.color = "#f00";
+                                }
+                                else if (result[i].Data == "000000") {
+                                    document.getElementById("TwoFL").style.color = "#7e7474";
+                                    document.getElementById("TwoFL2").innerHTML = "off";
+                                    document.getElementById("TwoFL2").style.color = "#7e7474";
+                                }
+                            }
+                            else if (result[i].Modle == "03") {
+
+                                if (result[i].Data == "000001") {
+                                    document.getElementById("Hall").style.color = "#5daced";
+                                    document.getElementById("Hall2").innerHTML = "on";
+                                    document.getElementById("Hall2").style.color = "#f00";
+                                }
+                                else if (result[i].Data == "000000") {
+                                    document.getElementById("Hall").style.color = "#7e7474";
+                                    document.getElementById("Hall2").innerHTML = "off";
+                                    document.getElementById("Hall2").style.color = "#7e7474";
+                                }
+                            }
+                            else if (result[i].Modle == "04") {
+                                if (result[i].Data == "000001") {
+                                    document.getElementById("Stairs").style.color = "#5daced";
+                                    document.getElementById("Stairs2").innerHTML = "on";
+                                    document.getElementById("Stairs2").style.color = "#f00";
+                                }
+                                else if (result[i].Data == "000000") {
+                                    document.getElementById("Stairs").style.color = "#7e7474";
+                                    document.getElementById("Stairs2").innerHTML = "off";
+                                    document.getElementById("Stairs2").style.color = "#7e7474";
+                                }
+                            }
+                            else if (result[i].Modle == "05") {
+                                if (result[i].Data == "000001") {
+                                    document.getElementById("Kitchen").style.color = "#5daced";
+                                    document.getElementById("Kitchen2").innerHTML = "on";
+                                    document.getElementById("Kitchen2").style.color = "#f00";
+                                }
+                                else if (result[i].Data == "000000") {
+                                    document.getElementById("Kitchen").style.color = "#7e7474";
+                                    document.getElementById("Kitchen2").innerHTML = "off";
+                                    document.getElementById("Kitchen2").style.color = "#7e7474";
+                                }
+                            }
+                            else if (result[i].Modle == "06") {
+                                if (result[i].Data == "000001") {
+                                    document.getElementById("Study").style.color = "#5daced";
+                                    document.getElementById("Study2").innerHTML = "on";
+                                    document.getElementById("Study2").style.color = "#f00";
+                                }
+                                else if (result[i].Data == "000000") {
+                                    document.getElementById("Study").style.color = "#7e7474";
+                                    document.getElementById("Study2").innerHTML = "off";
+                                    document.getElementById("Study2").style.color = "#7e7474";
+                                }
+                            }
+                            else if (result[i].Modle == "07") {
+
+                            }
+                            else if (result[i].Modle == "08") {
+                            }
+                            else if (result[i].Modle == "09") {
+                                if (result[i].Data == "000001") {
+                                    document.getElementById("curtain").innerText = "已打开";
+                                    document.getElementById("curtain").style.color = "#fb0808";
+                                }
+                                else if (result[i].Data == "000000") {
+                                    document.getElementById("curtain").innerText = "已关闭";
+                                    document.getElementById("curtain").style.color = "#000";
+                                }
+                            }
+                            else if (result[i].Modle == "0a") {
+                                if (result[i].Data == "000001") {
+                                    document.getElementById("waring").innerText = "已打开";
+                                    document.getElementById("waring").style.color = "#fb0808";
+                                }
+                                else if (result[i].Data == "000000") {
+                                    document.getElementById("waring").innerText = "已关闭";
+                                    document.getElementById("waring").style.color = "#000";
+                                }
+                            }
+                            else if (result[i].Modle == "0b") {
+                                if (result[i].Data[0] == '0') {
+                                }
+                                else {
+                                }
+                                if (result[i].Data[1] == '0') {
+                                    document.getElementById("door").innerText = "已关闭";
+                                    document.getElementById("door").style.color = "#000";
+                                }
+                                else {
+                                    document.getElementById("door").innerText = "已打开";
+                                    document.getElementById("door").style.color = "#fb0808";
+                                }
+                            }
+                            else if (result[i].Modle == "0c") {
+                                if (result[i].Data == "000001") {
+                                    document.getElementById("camera").innerText = "已打开";
+                                    document.getElementById("camera").style.color = "#fb0808";
+                                }
+                                else if (result[i].Data == "000000") {
+                                    document.getElementById("camera").innerText = "已关闭";
+                                    document.getElementById("camera").style.color = "#000";
+                                }
+                            }
+
+                        }
+                    }
+                });
+            }, 1000);
+    </script>
+</head>
+<body>
+    <div class="testing">
+        <header class="main">
+            <h1>智能家居监控管理系统</h1>
+        </header>
+        <section class="user">
+            <div class="profile-img">
+                <p id="user"><img src="../images/pic.jpg" alt="" height="40" width="40" /></p>
+            </div>
+            <div class="buttons">
+                <button class="ico-font">&#9206;</button>
+                <span class="button">帮助</span>
+                <span class="button blue"><a href="../Admin/login.ashx">退出</a></span>
+            </div>
+        </section>
+    </div>
+    <nav>
+        <ul>
+            <li class="section"><a href="../Admin/admin.ashx"><span class="icon">&#128711;</span> 控制面板</a></li>
+            <li>
+                <a href="../Admin/nodeinfo.ashx"><span class="icon">&#128196;</span>节点</a>
+            </li>
+            <li>
+                <a href="../html/files.html"><span class="icon">&#127748;</span> 媒体  </a>
+            </li>
+            <li>
+                <a href="../Admin/log.ashx"><span class="icon">&#59160;</span> 日志  </a>
+            </li>
+            <li><a href="../html/statistics.html"><span class="icon">&#128202;</span> 统计 </a></li>
+            <li><a href="../Admin/users.ashx"><span class="icon">&#128101;</span> 用户 </a></li>
+        </ul>
+    </nav>
+    <section class="content">
+        <section class="widget">
+            <header>
+                <span class="icon">&#128200;</span>
+                <hgroup>
+                    <h1>温湿度光强统计</h1>
+                    <h2>曲线图</h2>
+                </hgroup>
+                <aside>
+                    <button class="left-btn">&#59229;</button><button class="right-btn">&#59230;</button>
+                </aside>
+            </header>
+            <div class="content cycle">
+                <div id="flot-example-2" class="graph-area"></div>
+                <div id="flot-example-1" class="graph-area"></div>
+            </div>
+        </section>
+        <section class="widget">
+            <header>
+                <span class="icon">&#128161;</span>
+                <hgroup>
+                    <h1>灯光</h1>
+                    <h2>状态 &amp; 控制</h2>
+                </hgroup>
+                
+            </header>
+            <div class="content">
+                <section class="stats-wrapper">
+                    <button class="stats" onclick="slpatient('OneFL')">
+                        <p class='OneFL'><span id="OneFL">主卧</span></p>
+                        <p id="OneFL2">off</p>
+                    </button>
+                    <button class="stats" onclick="slpatient('TwoFL')">
+                        <p class='TwoFL'><span id="TwoFL">次卧</span></p>
+                        <p id="TwoFL2">off</p>
+                    </button>
+                    <button class="stats" onclick="slpatient('Kitchen')">
+                        <p class='Kitchen'><span id="Kitchen">厨房</span></p>
+                        <p id="Kitchen2">off</p>
+                    </button>
+                    <button class="stats" onclick="slpatient('Hall')">
+                        <p class='Hall'><span id="Hall">大厅</span></p>
+                        <p id="Hall2">off</p>
+                    </button>
+                    <button class="stats" onclick="slpatient('Stairs')">
+                        <p class=' Stairs'><span id="Stairs">楼梯</span></p>
+                        <p id="Stairs2">off</p>
+                    </button>
+                    <button class="stats" onclick="slpatient('Study')">
+                        <p class='Study'><span id="Study">书房</span></p>
+                        <p id="Study2">off</p>
+                    </button>
+                </section>
+            </div>
+        </section>
+        <div class="widget-container">
+            <section class="widget small">
+                <header>
+                    <span class="icon">&#128276;</span>
+                    <hgroup>
+                        <h1>安全</h1>
+                        <h2>烟雾、门窗状态</h2>
+                    </hgroup>
+                    
+                </header>
+                <div class="content no-padding timeline">
+                    <div class="tl-post comments">
+                        <span class="icon">&#59168;</span>
+                        <p class="gas">
+                            <a href="#">报警:</a> <a id="waring">已关闭</a>
+                        </p>
+                    </div>
+                    <div class="tl-post comments">
+                        <span class="icon">&#59168;</span>
+                        <p>
+                            <a href="#">门磁:</a> <a id="door">已关闭</a>
+                        </p>
+                    </div>
+                    <div class="tl-post comments">
+                        <span class="icon">&#59168;</span>
+                        <p>
+                            <a href="#">窗帘:</a> <a id="curtain">已关闭</a>
+                        </p>
+                    </div>
+                    <div class="tl-post comments">
+                        <span class="icon">&#59168;</span>
+                        <p>
+                            <a href="#">摄像头:</a> <a id="camera">已关闭</a>
+                        </p>
+                    </div>
+                    <!--<span class="show-more"><a	 href="#">More</a></span>-->
+                </div>
+            </section>
+            <section class="widget small">
+                <header>
+                    <span class="icon">&#128363;</span>
+                    <hgroup>
+                        <h1>时间轴</h1>
+                        <h2>操作信息</h2>
+                    </hgroup>
+                    
+                </header>
+                <div id="logtimeline" class="content no-padding timeline">
+                    <div class="tl-post">
+                        <span class="icon"></span>
+                        <p><a href="#"></a></p>
+                    </div>
+                    <div class="tl-post">
+                        <span class="icon"></span>
+                        <p><a href="#"></a></p>
+                    </div>
+                    <div class="tl-post">
+                        <span class="icon"></span>
+                        <p><a href="#"></a></p>
+                    </div>
+                    <div class="tl-post">
+                        <span class="icon"></span>
+                        <p><a href="#"></a></p>
+                    </div>
+                    <div class="pie graph-area"></div>
+                </div>
+            </section>
+        </div>
+        <div class="widget-container">
+            <div style="height:80px">
+                北京华清远见教育集团 <a href="http://www.farsight.com.cn/" title="Farsight" target="_blank">Farsight</a> - 技术支持 <a href="http://dev.hqyj.com/" target="_blank" title="研发中心">研发中心</a>
+            </div>
+        </div>
+    </section>
+    <script src="../Scripts/jquery-1.6.1.min.js"></script>
+    <script src="../js/jquery.wysiwyg.js"></script>
+    <script src="../js/custom.js"></script>
+    <script src="../js/cycle.js"></script>
+    <script src="../js/jquery.checkbox.min.js"></script>
+    <script src="../js/flot.js"></script>
+    <script src="../js/flot.resize.js"></script>
+    <script src="../js/flot-time.js"></script>
+    <script src="../js/flot-pie.js"></script>
+    <script src="../js/ajax.js" type="text/javascript"></script>
+    <script src="../js/flot-graphs.js"></script>
+    <script src="../js/cycle.js"></script>
+    <script src="../js/jquery.tablesorter.min.js"></script>
+    <script src="../js/ajax.js" type="text/javascript"></script>
+    <script type="text/javascript">
+            
+        // Feature slider for graphs
+        $('.cycle').cycle({
+            fx: "scrollHorz",
+            timeout: 0,
+            slideResize: 0,
+            prev: '.left-btn',
+            next: '.right-btn'
+        });
+        $(document).ready(init);
+        function init() {
+            var slpata = document.getElementById("logtimeline");
+            ajax("../Admin/log.ashx", "type=log&index=4", function (restext) {
+                var result = JSON.parse(restext);
+                if (result.result == "true") {
+                    var a = result.data
+                    a = a + "<div class='pie graph-area'></div>";
+                    slpata.innerHTML = a;
+                }
+            });
+        }
+        
+    </script>
+</body>
+</html>
